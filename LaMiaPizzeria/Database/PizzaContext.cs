@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LaMiaPizzeria.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LaMiaPizzeria.Database
 {

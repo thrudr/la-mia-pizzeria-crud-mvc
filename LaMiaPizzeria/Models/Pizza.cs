@@ -15,7 +15,7 @@ namespace LaMiaPizzeria.Models
         public string Description { get; set; }
 
         [Required]
-        public string Imagine { get; set; }
+        public string Image { get; set; }
 
         [Required]
         [Range(1,15000)]
@@ -24,11 +24,11 @@ namespace LaMiaPizzeria.Models
 
         public Pizza() { }
 
-        public Pizza(string name, string description, string imagine, double price)
+        public Pizza(string name, string description, string image, double price)
         {
             this.Name = name;
             this.Description= description;
-            this.Imagine= imagine;
+            this.Image= image;
             this.Price= price;
         }
     }
