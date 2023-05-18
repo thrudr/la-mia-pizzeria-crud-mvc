@@ -1,6 +1,7 @@
 ﻿using LaMiaPizzeria.Database;
 using LaMiaPizzeria.Models;
 using Microsoft.AspNetCore.Mvc;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace LaMiaPizzeria.Controllers
 {
@@ -20,10 +21,12 @@ namespace LaMiaPizzeria.Controllers
         {
             using (PizzaContext db = new PizzaContext())
             {
-
+                Pizza newPizza = new Pizza();
+                return View("Create", newPizza);
             }
-            return View();
         }
+
+
     }
 
 }
