@@ -1,6 +1,7 @@
 ﻿using LaMiaPizzeria.Database;
 using LaMiaPizzeria.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.SqlServer.Server;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace LaMiaPizzeria.Controllers
@@ -26,7 +27,23 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Pizza newPizza)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Create", newPizza);
+            }
 
+            using (PizzaContext db = new PizzaContext())
+            {
+                db.Pizzas.Add(newPizza);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+        }
     }
 
 }
