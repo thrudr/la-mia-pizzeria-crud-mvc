@@ -3,7 +3,7 @@
 <div class="container">
     <h2 class="mb-3">Nova Pizza, mais sabores!</h2>
     <h6>Acrescente sua pizza na nossa lista dos desejos. Lembrando que precisamos saber somente os ingredientes principais, o resto "xa co noiz!"</h6>
-    <form asp-controller="Article" asp-action="Create" method="post">
+    <form asp-controller="Pizza" asp-action="Create" method="post">
         @Html.AntiForgeryToken()
         <div class="mb-3">
             <label asp-for="Name" class="form-label">Titolo</label>
