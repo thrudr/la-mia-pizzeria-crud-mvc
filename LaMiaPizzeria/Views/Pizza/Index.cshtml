@@ -2,32 +2,34 @@
 
 <div class="container text-center">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 m-2">
             <h3>Partiu escolher a redonda!</h3>
         </div>
     </div>
     
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 p-4">
             <a class="btn btn-primary" href="@Url.Action("Create", "Pizza")">
                 Adicionar Pizza
             </a>
         </div>
     </div>
+</div>
 
-    <div>
+<div class="container">
+    <div class="row">
         @foreach(Pizza pizza in Model)
         {
-            <div class="row">
-            <div class="card" style="width: 18rem;">
-                <img src="@pizza.Image" class="card-img-top" alt="Imagem @pizza.Name">
-                <div class="card-body">
-                    <h5 class="card-title">@pizza.Name</h5>
-                    <p class="card-text">@pizza.Description</p>
-                    <p class="card-text">R$ @pizza.Price</p>
-                    <a href="#" class="btn btn-primary">Saiba Mais</a>
-                </div>
-            </div>
+            <div class="col text-center mx-2 mb-2">
+                    <div class="card" style="width: 18rem;">
+                        <img src="@pizza.Image" class="card-img-top" alt="Imagem @pizza.Name">
+                        <div class="card-body">
+                            <h5 class="card-title">@pizza.Name</h5>
+                            <p class="card-text">@pizza.Description</p>
+                            <p class="card-text">R$ @pizza.Price</p>
+                            <a href="#" class="btn btn-primary">Saiba Mais</a>
+                        </div>
+                    </div>
             </div>
         }
         
