@@ -91,11 +91,36 @@ namespace LaMiaPizzeria.Controllers
                 }
                 else
                 {
-                    return NotFound("L'articolo da modificare non esiste!");
+                    return NotFound("Pizza Not Found!");
                 }
             }
-
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            using (PizzaContext db = new PizzaContext())
+            {
+                Pizza? pizzaToDelete = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+
+                if (pizzaToDelete != null)
+                {
+                    db.Remove(pizzaToDelete);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    return NotFound("Pizza Not Found!");
+
+                }
+            }
+        }
+
+
 
     }
 
