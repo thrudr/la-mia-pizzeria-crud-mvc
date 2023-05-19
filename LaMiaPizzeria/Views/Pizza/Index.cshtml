@@ -27,7 +27,9 @@
                             <h5 class="card-title">@pizza.Name</h5>
                             <p class="card-text">@pizza.Description</p>
                             <p class="card-text">R$ @pizza.Price</p>
-                            <a href="#" class="btn btn-primary">Saiba Mais</a>
+                            <a class="btn btn-warning btn-sm mt-2" href="@Url.Action("Update", "Pizza", new {id = pizza.Id})">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg>
+                            </a>
                         </div>
                     </div>
             </div>
