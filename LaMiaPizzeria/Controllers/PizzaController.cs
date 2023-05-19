@@ -64,6 +64,38 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int id, Pizza modifiedPizza)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Update", modifiedPizza);
+            }
+
+            using (PizzaContext db = new PizzaContext())
+            {
+                Pizza? pizzaToModify = db.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
+
+                if (pizzaToModify != null)
+                {
+
+                    pizzaToModify.Name = modifiedPizza.Name;
+                    pizzaToModify.Description = modifiedPizza.Description;
+                    pizzaToModify.Image = modifiedPizza.Image;
+                    pizzaToModify.Price = modifiedPizza.Price;
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    return NotFound("L'articolo da modificare non esiste!");
+                }
+            }
+
+        }
 
     }
 
