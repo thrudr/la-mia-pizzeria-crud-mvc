@@ -1,4 +1,12 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using LaMiaPizzeria.Database;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<PizzaContext>();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<PizzaContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -25,5 +33,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();
