@@ -1,5 +1,6 @@
 ﻿using LaMiaPizzeria.Database;
 using LaMiaPizzeria.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.SqlServer.Server;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -8,6 +9,7 @@ namespace LaMiaPizzeria.Controllers
 {
     public class PizzaController : Controller
     {
+        [Authorize]
         public IActionResult Index()
         {
             using (PizzaContext db = new PizzaContext())
@@ -17,6 +19,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
@@ -27,6 +30,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Pizza newPizza)
@@ -45,6 +49,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -64,6 +69,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, Pizza modifiedPizza)
@@ -96,6 +102,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
