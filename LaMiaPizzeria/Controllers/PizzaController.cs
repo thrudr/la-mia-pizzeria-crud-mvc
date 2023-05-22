@@ -7,9 +7,10 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace LaMiaPizzeria.Controllers
 {
+    
     public class PizzaController : Controller
     {
-        [Authorize(Roles = "USER")]
+        [Authorize(Roles = "ADMIN,USER")]
         public IActionResult Index()
         {
             using (PizzaContext db = new PizzaContext())
