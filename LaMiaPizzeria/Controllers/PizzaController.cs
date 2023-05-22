@@ -9,7 +9,7 @@ namespace LaMiaPizzeria.Controllers
 {
     public class PizzaController : Controller
     {
-        [Authorize]
+        [Authorize(Roles = "USER")]
         public IActionResult Index()
         {
             using (PizzaContext db = new PizzaContext())
@@ -19,7 +19,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Create()
         {
@@ -30,7 +30,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Pizza newPizza)
@@ -49,7 +49,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -69,7 +69,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, Pizza modifiedPizza)
@@ -102,7 +102,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
